@@ -7,20 +7,19 @@ import uy.edu.um.prog2.adt.List.MyListImpl;
 import uy.edu.um.prog2.adt.exceptions.EmptyListException;
 import uy.edu.um.prog2.adt.exceptions.OutOfRangeException;
 
-public class MyListTest<T> {
-    private MyList<String> listTest;
-    private String elementTest1 = "First Element";
-    private String elementTest2 = "Second Element";
-    private String elementTest3 = "Third Element";
+public class MyListTest {
+    private MyListImpl<String> listTest;
+    private String elementTest1;
+    private String elementTest2;
+    private String elementTest3;
 
-    @BeforeClass
+    @Before
     public void setUp() {
         listTest = new MyListImpl<>();
         elementTest1 = "First Element";
         elementTest2 = "Second Element";
         elementTest3 = "Third Element";
     }
-
 
 
     @Test
@@ -58,8 +57,6 @@ public class MyListTest<T> {
     @Test
     public void testGetFunctionOutOfRange() {
         try {
-            MyListImpl<String> listTest = new MyListImpl<>();
-            String elementTest1 = "First Element";
             listTest.add(elementTest1);
             Assert.assertEquals(elementTest1, listTest.get(0));
             Assert.assertThrows(OutOfRangeException.class, () -> {
@@ -70,6 +67,14 @@ public class MyListTest<T> {
             Assert.fail("Se esperaba que lanzara OutOfRangeException");
         }
     }
+
+    @Test
+    public void testGetFunctionEmptyListException() {
+        Assert.assertThrows(EmptyListException.class, () -> {
+            listTest.get(1);
+        });
+    }
+
 
     @Test
     public void testContainsFunction() {
