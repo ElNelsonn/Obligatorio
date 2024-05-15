@@ -1,5 +1,5 @@
-package uy.edu.um.adt.List;
-import uy.edu.um.adt.exceptions.*;
+package uy.edu.um.prog2.adt.List;
+import uy.edu.um.prog2.adt.exceptions.*;
 
 public class MyListImpl<T> implements MyList<T> {
     private Node<T> firstNode;

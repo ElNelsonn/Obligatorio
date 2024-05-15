@@ -1,6 +1,6 @@
-package uy.edu.um.adt.Stack;
+package uy.edu.um.prog2.adt.Stack;
 
-import uy.edu.um.adt.exceptions.EmptyStackException;
+import uy.edu.um.prog2.adt.exceptions.EmptyStackException;
 
 public interface MyStack<T> {
 

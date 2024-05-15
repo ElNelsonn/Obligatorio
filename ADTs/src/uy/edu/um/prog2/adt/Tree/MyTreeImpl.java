@@ -1,6 +1,6 @@
-package uy.edu.um.adt.Tree;
+package uy.edu.um.prog2.adt.Tree;
 
-import uy.edu.um.adt.exceptions.ElementNotFound;
+import uy.edu.um.prog2.adt.exceptions.ElementNotFound;
 
 public class MyTreeImpl<K extends Comparable<K>, T> implements MyTree<K, T> {
     private TreeNode<K, T> root;

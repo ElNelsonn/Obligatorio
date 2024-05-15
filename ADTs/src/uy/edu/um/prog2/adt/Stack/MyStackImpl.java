@@ -1,7 +1,7 @@
-package uy.edu.um.adt.Stack;
+package uy.edu.um.prog2.adt.Stack;
 
-import uy.edu.um.adt.List.Node;
-import uy.edu.um.adt.exceptions.EmptyStackException;
+import uy.edu.um.prog2.adt.List.Node;
+import uy.edu.um.prog2.adt.exceptions.EmptyStackException;
 
 public class MyStackImpl<T> implements MyStack<T> {
     private Node<T> first;

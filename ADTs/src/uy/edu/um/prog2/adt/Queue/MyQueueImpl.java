@@ -1,7 +1,7 @@
-package uy.edu.um.adt.Queue;
+package uy.edu.um.prog2.adt.Queue;
 
-import uy.edu.um.adt.List.Node;
-import uy.edu.um.adt.exceptions.EmptyQueueException;
+import uy.edu.um.prog2.adt.List.Node;
+import uy.edu.um.prog2.adt.exceptions.EmptyQueueException;
 
 
 public class MyQueueImpl<T> implements MyQueue<T> {
