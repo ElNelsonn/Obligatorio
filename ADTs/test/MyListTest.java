@@ -89,11 +89,15 @@ public class MyListTest {
         Assert.assertTrue(listTest.contains(elementTestAux));
     }
 
+
+
+
     @Test
     public void testSize() {
         Assert.assertEquals(0, listTest.size());
         listTest.add(elementTest1);
         Assert.assertEquals(1, listTest.size());
+
 
     }
 
