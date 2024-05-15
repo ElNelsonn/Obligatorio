@@ -79,7 +79,12 @@ public class MyListTest {
     @Test
     public void testContainsFunction() {
 
-
+        listTest.add(elementTest1);
+        Assert.assertTrue(listTest.contains(elementTest1));
+        listTest.add(elementTest2);
+        listTest.add(elementTest3);
+        Assert.assertTrue(listTest.contains(elementTest2));
+        Assert.assertTrue(listTest.contains(elementTest3));
 
 
     }
