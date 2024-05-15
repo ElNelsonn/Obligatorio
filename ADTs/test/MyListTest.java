@@ -21,7 +21,6 @@ public class MyListTest {
         elementTest3 = "Third Element";
     }
 
-
     @Test
     public void testAddFunction() {
         listTest.add(elementTest1);
@@ -75,19 +74,36 @@ public class MyListTest {
         });
     }
 
-
     @Test
     public void testContainsFunction() {
-
+        Assert.assertFalse(listTest.contains(elementTest1));
         listTest.add(elementTest1);
         Assert.assertTrue(listTest.contains(elementTest1));
         listTest.add(elementTest2);
         listTest.add(elementTest3);
         Assert.assertTrue(listTest.contains(elementTest2));
         Assert.assertTrue(listTest.contains(elementTest3));
+        String elementTestAux = "Aux";
+        Assert.assertFalse(listTest.contains(elementTestAux));
+        listTest.add(elementTestAux);
+        Assert.assertTrue(listTest.contains(elementTestAux));
+    }
 
+    @Test
+    public void testSize() {
+        Assert.assertEquals(0, listTest.size());
+        listTest.add(elementTest1);
+        Assert.assertEquals(1, listTest.size());
 
     }
+
+
+
+
+
+
+
+
 
 
 
