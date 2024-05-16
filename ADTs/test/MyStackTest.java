@@ -54,7 +54,7 @@ public class MyStackTest {
             stackTest.push(elementTest3);
             stackTest.push(elementTest3);
             Assert.assertEquals(8, stackTest.size());
-        } catch (EmptyStackException ignore){
+        } catch (EmptyStackException ignore) {
             Assert.fail("No se esperaba ninguna excepcion");
         }
     }
@@ -107,7 +107,7 @@ public class MyStackTest {
             Assert.assertThrows(EmptyStackException.class, () -> {
                 stackTest.pop();
             });
-        } catch (EmptyStackException ignored){
+        } catch (EmptyStackException ignored) {
             System.out.println("EmptyStackException");
         }
     }
@@ -131,7 +131,7 @@ public class MyStackTest {
             stackTest.push(elementTest3);
             Assert.assertEquals(elementTest1, stackTest.pop());
 
-        } catch (EmptyStackException ignored){
+        } catch (EmptyStackException ignored) {
             System.out.println("EmptyStackException");
         }
     }
