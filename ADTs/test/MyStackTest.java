@@ -3,6 +3,7 @@ import org.junit.Before;
 import org.junit.Test;
 import uy.edu.um.prog2.adt.List.MyListImpl;
 import uy.edu.um.prog2.adt.Stack.MyStackImpl;
+import uy.edu.um.prog2.adt.exceptions.ElementNotFound;
 import uy.edu.um.prog2.adt.exceptions.EmptyListException;
 import uy.edu.um.prog2.adt.exceptions.EmptyStackException;
 import uy.edu.um.prog2.adt.exceptions.OutOfRangeException;
@@ -27,6 +28,38 @@ public class MyStackTest {
         stackTest.push(elementTest2);
         stackTest.push(elementTest1);
         Assert.assertEquals(elementTest1, stackTest.getFirst());
+    }
+
+    @Test
+    public void testSize() {
+        try {
+            Assert.assertEquals(0, stackTest.size());
+            stackTest.push(elementTest1);
+            Assert.assertEquals(1, stackTest.size());
+            stackTest.pop();
+            Assert.assertEquals(0, stackTest.size());
+            stackTest.push(elementTest1);
+            stackTest.push(elementTest2);
+            stackTest.push(elementTest3);
+            Assert.assertEquals(3, stackTest.size());
+            stackTest.pop();
+            Assert.assertEquals(2, stackTest.size());
+            stackTest.pop();
+            Assert.assertEquals(1, stackTest.size());
+            stackTest.pop();
+            Assert.assertEquals(0, stackTest.size());
+            stackTest.push(elementTest3);
+            stackTest.push(elementTest3);
+            stackTest.push(elementTest3);
+            stackTest.push(elementTest3);
+            stackTest.push(elementTest3);
+            stackTest.push(elementTest3);
+            stackTest.push(elementTest3);
+            stackTest.push(elementTest3);
+            Assert.assertEquals(8, stackTest.size());
+        } catch (EmptyStackException ignore){
+            Assert.fail("No se esperaba ninguna excepcion");
+        }
     }
 
     @Test
@@ -60,19 +93,66 @@ public class MyStackTest {
     }
 
 
+
+    @Test
     public void testPopEmptyStackException(){
-        try {
-            Assert.assertEquals(elementTest1, stackTest.peek());
             Assert.assertThrows(EmptyStackException.class, () -> {
-                stackTest.peek();
+                stackTest.pop();
             });
-        } catch (EmptyStackException ignored)
+        try {
+            stackTest.push(elementTest1);
+            stackTest.push(elementTest2);
+            stackTest.push(elementTest3);
+            stackTest.pop();
+            stackTest.pop();
+            stackTest.pop();
+            Assert.assertThrows(EmptyStackException.class, () -> {
+                stackTest.pop();
+            });
+        } catch (EmptyStackException ignored){
+            System.out.println("EmptyStackException");
+        }
     }
+
     @Test
     public void testPop(){
+        try {
+            stackTest.push(elementTest1);
+            Assert.assertEquals(elementTest1, stackTest.pop());
+            Assert.assertEquals(0, stackTest.size());
 
+
+            stackTest.push(elementTest2);
+            stackTest.push(elementTest3);
+            Assert.assertEquals(elementTest3, stackTest.pop());
+            Assert.assertEquals(elementTest2, stackTest.getFirst().getValue());
+            stackTest.pop();
+            stackTest.pop();
+            Assert.assertEquals(0, stackTest.size());
+            stackTest.push(elementTest1);
+            stackTest.push(elementTest3);
+            Assert.assertEquals(elementTest1, stackTest.pop());
+
+        } catch (EmptyStackException ignored){
+            System.out.println("EmptyStackException");
+        }
     }
 
+
+    @Test
+    public void testContainsFunction() {
+        Assert.assertFalse(stackTest.contains(elementTest1));
+        stackTest.push(elementTest1);
+        Assert.assertTrue(stackTest.contains(elementTest1));
+        stackTest.push(elementTest2);
+        stackTest.push(elementTest3);
+        Assert.assertTrue(stackTest.contains(elementTest2));
+        Assert.assertTrue(stackTest.contains(elementTest3));
+        String elementTestAux = "Aux";
+        Assert.assertFalse(stackTest.contains(elementTestAux));
+        stackTest.push(elementTestAux);
+        Assert.assertTrue(stackTest.contains(elementTestAux));
+    }
 
 
 

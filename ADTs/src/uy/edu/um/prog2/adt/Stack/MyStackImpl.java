@@ -15,6 +15,7 @@ public class MyStackImpl<T> implements MyStack<T> {
         if (this.first != null) {
             newNode.setNextNode(this.first);
             this.first = newNode;
+            this.length++;
         } else {
             this.first = newNode;
             this.length++;
