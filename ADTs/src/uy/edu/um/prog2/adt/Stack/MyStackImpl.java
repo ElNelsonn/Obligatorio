@@ -14,9 +14,11 @@ public class MyStackImpl<T> implements MyStack<T> {
         Node<T> newNode = new Node<>(value);
         if (this.first != null) {
             newNode.setNextNode(this.first);
+            this.first = newNode;
+        } else {
+            this.first = newNode;
+            this.length++;
         }
-        this.first = newNode;
-        this.length++;
     }
 
     public T peek() throws EmptyStackException {
