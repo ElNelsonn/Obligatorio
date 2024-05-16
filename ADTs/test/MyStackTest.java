@@ -71,10 +71,10 @@ public class MyStackTest {
 
     @Test
     public void testPeekEmptyStackException() {
-            Assert.assertThrows(EmptyStackException.class, () -> {
-                stackTest.peek();
-            });
-        try{
+        Assert.assertThrows(EmptyStackException.class, () -> {
+            stackTest.peek();
+        });
+        try {
             stackTest.push(elementTest1);
             Assert.assertEquals(elementTest1, stackTest.peek());
             stackTest.push(elementTest2);
@@ -83,9 +83,11 @@ public class MyStackTest {
             stackTest.pop();
             Assert.assertThrows(EmptyStackException.class, () -> {
                 stackTest.peek();
-        } catch (EmptyStackException ignored){
+            });
+        } catch (EmptyStackException ignored) {
             System.out.println("EmptyStackException");
         }
+
     }
 
 
