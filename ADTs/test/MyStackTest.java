@@ -72,7 +72,7 @@ public class MyStackTest {
     }
 
     @Test
-    public void testPeekEmptyStackException() {
+    public void testPeekFunctionEmptyStackException() {
         Assert.assertThrows(EmptyStackException.class, () -> {
             stackTest.peek();
         });
@@ -92,7 +92,7 @@ public class MyStackTest {
     }
 
     @Test
-    public void testPopEmptyStackException(){
+    public void testPopFunctionEmptyStackException(){
             Assert.assertThrows(EmptyStackException.class, () -> {
                 stackTest.pop();
             });

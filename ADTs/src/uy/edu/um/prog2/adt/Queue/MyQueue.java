@@ -10,7 +10,7 @@ public interface MyQueue<T> {
 
     boolean contains(T value);
 
-    T first();
+    T firstValue();
 
     int size();
 

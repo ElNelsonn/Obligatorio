@@ -5,8 +5,8 @@ import uy.edu.um.prog2.adt.exceptions.EmptyQueueException;
 
 
 public class MyQueueImpl<T> implements MyQueue<T> {
-    private Node<T> first;
-    private Node<T> last;
+    private Node<T> firstNode;
+    private Node<T> lastNode;
     private int length = 0;
 
     public MyQueueImpl() {
@@ -14,19 +14,19 @@ public class MyQueueImpl<T> implements MyQueue<T> {
 
     public void enqueue(T value) {
         Node<T> newNode = new Node<>(value);
-        if (this.first == null) {
-            first = newNode;
+        if (this.firstNode == null) {
+            this.firstNode = newNode;
         } else {
-            last.setNextNode(newNode);
+            this.lastNode.setNextNode(newNode);
         }
-        last = newNode;
+        this.lastNode = newNode;
         length++;
     }
 
     public T dequeue() throws EmptyQueueException {
-        if (this.first != null) {
-            T value = this.first.getValue();
-            this.first = this.first.getNextNode();
+        if (this.firstNode != null) {
+            T value = this.firstNode.getValue();
+            this.firstNode = this.firstNode.getNextNode();
             this.length--;
             return value;
         } else {
@@ -35,10 +35,10 @@ public class MyQueueImpl<T> implements MyQueue<T> {
     }
 
     public boolean contains(T value) {
-        if (this.first == null) {
+        if (this.firstNode == null) {
             return false;
         } else {
-            Node<T> auxNode = this.first;
+            Node<T> auxNode = this.firstNode;
             while ((auxNode != null) && !(auxNode.getValue().equals(value))) {
                 auxNode = auxNode.getNextNode();
             }
@@ -48,31 +48,31 @@ public class MyQueueImpl<T> implements MyQueue<T> {
 
 
     public boolean isEmpty() {
-        return (this.first == null);
+        return (this.firstNode == null);
     }
 
     public int size(){
         return length;
     }
 
-    public T first() {
-        return this.first.getValue();
+    public T firstValue() {
+        return this.firstNode.getValue();
     }
 
     public Node<T> getFirst() {
-        return first;
+        return firstNode;
     }
 
     public void setFirst(Node<T> first) {
-        this.first = first;
+        this.firstNode = first;
     }
 
     public Node<T> getLast() {
-        return last;
+        return lastNode;
     }
 
     public void setLast(Node<T> last) {
-        this.last = last;
+        this.lastNode = last;
     }
 
     public int getLength() {
