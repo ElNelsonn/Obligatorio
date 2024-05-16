@@ -1,12 +1,9 @@
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import uy.edu.um.prog2.adt.List.MyListImpl;
 import uy.edu.um.prog2.adt.Stack.MyStackImpl;
-import uy.edu.um.prog2.adt.exceptions.ElementNotFound;
-import uy.edu.um.prog2.adt.exceptions.EmptyListException;
 import uy.edu.um.prog2.adt.exceptions.EmptyStackException;
-import uy.edu.um.prog2.adt.exceptions.OutOfRangeException;
+
 
 public class MyStackTest {
         private MyStackImpl<String> stackTest;
@@ -19,7 +16,7 @@ public class MyStackTest {
         stackTest = new MyStackImpl<>();
         elementTest1 = "First Element";
         elementTest2 = "Second Element";
-        elementTest3 = "third Element";
+        elementTest3 = "Third Element";
     }
 
     @Test
