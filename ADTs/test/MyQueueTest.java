@@ -1,12 +1,8 @@
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import uy.edu.um.prog2.adt.Queue.MyQueue;
 import uy.edu.um.prog2.adt.Queue.MyQueueImpl;
-import uy.edu.um.prog2.adt.exceptions.EmptyListException;
 import uy.edu.um.prog2.adt.exceptions.EmptyQueueException;
-import uy.edu.um.prog2.adt.exceptions.EmptyStackException;
-import uy.edu.um.prog2.adt.exceptions.OutOfRangeException;
 
 public class MyQueueTest {
     private MyQueueImpl<String> queueTest;
@@ -70,6 +66,24 @@ public class MyQueueTest {
     }
 
     @Test
+    public void testDequeueFunctionEmptyQueueException(){
+        Assert.assertThrows(EmptyQueueException.class, () -> {
+           queueTest.dequeue();
+        });
+        try {
+            queueTest.enqueue(elementTest1);
+            queueTest.enqueue(elementTest2);
+            queueTest.dequeue();
+            queueTest.dequeue();
+            Assert.assertThrows(EmptyQueueException.class, () -> {
+                queueTest.dequeue();
+            });
+        } catch (EmptyQueueException ignore) {
+            Assert.fail("No debio entrar aca");
+        }
+    }
+
+    @Test
     public void testFirstValueFunction() {
         try {
             queueTest.enqueue(elementTest1);
@@ -90,11 +104,22 @@ public class MyQueueTest {
     }
 
     @Test
-    public void testEmptyQueueException(){
-
+    public void testFirstValueFunctionEmptyQueueException() {
+        Assert.assertThrows(EmptyQueueException.class, () -> {
+            queueTest.firstValue();
+        });
+        try {
+            queueTest.enqueue(elementTest1);
+            queueTest.enqueue(elementTest2);
+            queueTest.dequeue();
+            queueTest.dequeue();
+            Assert.assertThrows(EmptyQueueException.class, () -> {
+                queueTest.firstValue();
+            });
+        } catch (EmptyQueueException ignore) {
+            Assert.fail("No debio entrar aca");
+        }
     }
-
-
 
     @Test
     public void testContainsFunction() {
@@ -142,6 +167,4 @@ public class MyQueueTest {
             Assert.fail("No se esperaba ninguna excepcion");
         }
     }
-
-
 }

@@ -10,7 +10,7 @@ public interface MyQueue<T> {
 
     boolean contains(T value);
 
-    T firstValue();
+    T firstValue() throws EmptyQueueException;
 
     int size();
 

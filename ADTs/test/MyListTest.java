@@ -1,7 +1,6 @@
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import uy.edu.um.prog2.adt.List.MyList;
 import uy.edu.um.prog2.adt.List.MyListImpl;
 import uy.edu.um.prog2.adt.exceptions.ElementNotFound;
 import uy.edu.um.prog2.adt.exceptions.EmptyListException;

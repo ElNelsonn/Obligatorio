@@ -55,7 +55,10 @@ public class MyQueueImpl<T> implements MyQueue<T> {
         return length;
     }
 
-    public T firstValue() {
+    public T firstValue() throws EmptyQueueException {
+        if (firstNode == null) {
+            throw new EmptyQueueException();
+        }
         return this.firstNode.getValue();
     }
 
