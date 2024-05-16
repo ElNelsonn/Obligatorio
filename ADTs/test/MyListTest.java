@@ -89,7 +89,7 @@ public class MyListTest {
         listTest.add(elementTestAux);
         Assert.assertTrue(listTest.contains(elementTestAux));
     }
-    
+
     @Test
     public void testRemoveFunction() {
         try {

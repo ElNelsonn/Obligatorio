@@ -25,6 +25,8 @@ public class MyStackTest {
         stackTest.push(elementTest2);
         stackTest.push(elementTest1);
         Assert.assertEquals(elementTest1, stackTest.getFirst().getValue());
+        Assert.assertEquals(elementTest2, stackTest.getFirst().getNextNode().getValue());
+        Assert.assertEquals(elementTest3, stackTest.getFirst().getNextNode().getNextNode().getValue());
     }
 
     @Test
@@ -54,7 +56,7 @@ public class MyStackTest {
             stackTest.push(elementTest3);
             stackTest.push(elementTest3);
             Assert.assertEquals(8, stackTest.size());
-        } catch (EmptyStackException ignore) {
+        } catch (EmptyStackException ignored) {
             Assert.fail("No se esperaba ninguna excepcion");
         }
     }
@@ -85,12 +87,9 @@ public class MyStackTest {
                 stackTest.peek();
             });
         } catch (EmptyStackException ignored) {
-            System.out.println("EmptyStackException");
+            Assert.fail("No debio entrar aca");
         }
-
     }
-
-
 
     @Test
     public void testPopEmptyStackException(){
@@ -108,34 +107,29 @@ public class MyStackTest {
                 stackTest.pop();
             });
         } catch (EmptyStackException ignored) {
-            System.out.println("EmptyStackException");
+            Assert.fail("No debio entrar aca");
         }
     }
 
     @Test
-    public void testPop(){
+    public void testPopFunction(){
         try {
             stackTest.push(elementTest1);
             Assert.assertEquals(elementTest1, stackTest.pop());
             Assert.assertEquals(0, stackTest.size());
-
-
             stackTest.push(elementTest2);
             stackTest.push(elementTest3);
             Assert.assertEquals(elementTest3, stackTest.pop());
-            Assert.assertEquals(elementTest2, stackTest.getFirst().getValue());
-            stackTest.pop();
-            stackTest.pop();
+            Assert.assertEquals(elementTest2, stackTest.pop());
             Assert.assertEquals(0, stackTest.size());
             stackTest.push(elementTest1);
             stackTest.push(elementTest3);
+            Assert.assertEquals(elementTest3, stackTest.pop());
             Assert.assertEquals(elementTest1, stackTest.pop());
-
         } catch (EmptyStackException ignored) {
-            System.out.println("EmptyStackException");
+            Assert.fail("No se esperaba ninguna excepcion");
         }
     }
-
 
     @Test
     public void testContainsFunction() {

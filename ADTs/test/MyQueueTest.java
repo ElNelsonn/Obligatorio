@@ -44,6 +44,28 @@ public class MyQueueTest {
 
     @Test
     public void testDequeue() {
+        try {
+            queueTest.enqueue(elementTest1);
+            Assert.assertEquals(elementTest1, queueTest.dequeue());
+            queueTest.enqueue(elementTest1);
+            queueTest.enqueue(elementTest2);
+            Assert.assertEquals(elementTest1, queueTest.dequeue());
+            Assert.assertEquals(elementTest2, queueTest.dequeue());
+            queueTest.enqueue(elementTest1);
+            queueTest.enqueue(elementTest2);
+            queueTest.enqueue(elementTest3);
+            Assert.assertEquals(elementTest1, queueTest.dequeue());
+            Assert.assertEquals(elementTest2, queueTest.dequeue());
+            Assert.assertEquals(elementTest3, queueTest.dequeue());
+            queueTest.enqueue(elementTest1);
+            queueTest.enqueue(elementTest2);
+            Assert.assertEquals(elementTest1, queueTest.dequeue());
+            queueTest.enqueue(elementTest3);
+            Assert.assertEquals(elementTest2, queueTest.dequeue());
+            Assert.assertEquals(elementTest3, queueTest.dequeue());
+        } catch (EmptyQueueException ignore) {
+            Assert.fail("No se esperaba ninguna excepcion");
+        }
 
     }
 
