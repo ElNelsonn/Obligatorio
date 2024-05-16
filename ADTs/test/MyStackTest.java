@@ -24,7 +24,7 @@ public class MyStackTest {
         stackTest.push(elementTest3);
         stackTest.push(elementTest2);
         stackTest.push(elementTest1);
-        Assert.assertEquals(elementTest1, stackTest.getFirst());
+        Assert.assertEquals(elementTest1, stackTest.getFirst().getValue());
     }
 
     @Test
@@ -71,19 +71,18 @@ public class MyStackTest {
 
     @Test
     public void testPeekEmptyStackException() {
-        try {
-            Assert.assertEquals(elementTest1, stackTest.peek());
             Assert.assertThrows(EmptyStackException.class, () -> {
                 stackTest.peek();
             });
-        } catch (EmptyStackException ignored) {
-            System.out.println("EmptyStackException");
-        }
         try{
             stackTest.push(elementTest1);
             Assert.assertEquals(elementTest1, stackTest.peek());
             stackTest.push(elementTest2);
             Assert.assertEquals(elementTest2, stackTest.peek());
+            stackTest.pop();
+            stackTest.pop();
+            Assert.assertThrows(EmptyStackException.class, () -> {
+                stackTest.peek();
         } catch (EmptyStackException ignored){
             System.out.println("EmptyStackException");
         }
