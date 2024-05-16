@@ -1,6 +1,5 @@
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import uy.edu.um.prog2.adt.List.MyList;
 import uy.edu.um.prog2.adt.List.MyListImpl;
@@ -90,8 +89,7 @@ public class MyListTest {
         listTest.add(elementTestAux);
         Assert.assertTrue(listTest.contains(elementTestAux));
     }
-
-
+    
     @Test
     public void testRemoveFunction() {
         try {
@@ -160,7 +158,6 @@ public class MyListTest {
             Assert.fail("No se esperaba ninguna excepcion");
         }
     }
-
 }
 
 

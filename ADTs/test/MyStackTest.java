@@ -151,10 +151,4 @@ public class MyStackTest {
         stackTest.push(elementTestAux);
         Assert.assertTrue(stackTest.contains(elementTestAux));
     }
-
-
-
-
-
-
 }

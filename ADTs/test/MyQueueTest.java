@@ -9,7 +9,7 @@ import uy.edu.um.prog2.adt.exceptions.EmptyStackException;
 import uy.edu.um.prog2.adt.exceptions.OutOfRangeException;
 
 public class MyQueueTest {
-    private MyQueue<String> queueTest;
+    private MyQueueImpl<String> queueTest;
     private String elementTest1;
     private String elementTest2;
     private String elementTest3;
@@ -26,9 +26,21 @@ public class MyQueueTest {
 
     @Test
     public void testEnqueue() {
-
+        queueTest.enqueue(elementTest1);
+        Assert.assertEquals(elementTest1, queueTest.getFirst().getValue());
+        queueTest.enqueue(elementTest2);
+        Assert.assertEquals(elementTest1, queueTest.getFirst().getValue());
+        Assert.assertEquals(elementTest2, queueTest.getLast().getValue());
+        queueTest.enqueue(elementTest3);
+        Assert.assertEquals(elementTest1, queueTest.getFirst().getValue());
+        Assert.assertEquals(elementTest2, queueTest.getFirst().getNextNode().getValue());
+        Assert.assertEquals(elementTest3, queueTest.getLast().getValue());
+        queueTest.enqueue(elementTest4);
+        Assert.assertEquals(elementTest1, queueTest.getFirst().getValue());
+        Assert.assertEquals(elementTest2, queueTest.getFirst().getNextNode().getValue());
+        Assert.assertEquals(elementTest3, queueTest.getFirst().getNextNode().getNextNode().getValue());
+        Assert.assertEquals(elementTest4, queueTest.getLast().getValue());
     }
-
 
     @Test
     public void testDequeue() {
