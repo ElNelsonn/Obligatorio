@@ -50,13 +50,13 @@ public class MyTreeImpl<K extends Comparable<K>, T> implements MyTree<K, T> {
 
     //--Find--
     public T findSort(K key) {
-        return this.findSort2(key, this.root);
+        return (findSort2(key, this.root));
     }
     private T findSort2(K key, TreeNode<K, T> root) {
         if (root == null) {
             return null;
         } else if (root.getKey().equals(key)) {
-            return this.root.getValue();
+            return root.getValue();
         } else {
             //Comparas key con root
             if (root.getKey().compareTo(key) < 0) {
