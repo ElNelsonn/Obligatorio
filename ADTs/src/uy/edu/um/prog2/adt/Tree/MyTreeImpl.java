@@ -168,18 +168,19 @@ public class MyTreeImpl<K extends Comparable<K>, T> implements MyTree<K, T> {
 
     //--Delete--
     public void delete(K key) throws ElementNotFound,EmptyTreeException {
-        T existe = findSort(key);
-        if (existe!=null){
-            TreeNode<K, T> aux = delete2(key,this.root);
-            if(this.root == null){
-                throw new ElementNotFound();
-            } else {
-                this.root = aux;
-            }
-        } else {
+        if (this.root == null){
             throw new EmptyTreeException();
+        } else {
+            T elem = findSort(key);
+            if (elem!=null){
+                TreeNode<K, T> aux = delete2(key, this.root);
+                this.root = aux;
+            } else {
+                throw  new ElementNotFound();
+            }
         }
     }
+
     private TreeNode<K, T> delete2(K key,TreeNode<K, T> root) {
         if(root==null) {
             return null;

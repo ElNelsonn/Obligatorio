@@ -237,6 +237,119 @@ public class MyTreeTest {
     }
 
 
+    @Test
+    public void deleteWithTwoLeafTest(){
+        try{
+            treeTest.insert(elementTest4,elementTest4);
+            treeTest.insert(elementTest2,elementTest2);
+            treeTest.insert(elementTest6,elementTest6);
+            treeTest.insert(elementTest1,elementTest1);
+            treeTest.insert(elementTest3,elementTest3);
+            treeTest.insert(elementTest5,elementTest5);
+            treeTest.insert(elementTest7,elementTest7);
+            //    4
+            //   / \
+            //  2   6
+            // / \ / \
+            //1  3 5  7
+
+            treeTest.delete(elementTest6);
+            //    4
+            //   / \
+            //  2   7
+            // / \ /
+            //1  3 5
+            Assert.assertEquals(null, treeTest.findSort(elementTest6));
+            Assert.assertEquals(elementTest5, treeTest.findSort(elementTest5));
+            Assert.assertEquals(elementTest7, treeTest.findSort(elementTest7));
+            Assert.assertEquals(elementTest7, treeTest.getRoot().getRight().getKey());
+            Assert.assertEquals(elementTest5, treeTest.getRoot().getRight().getLeft().getKey());
+
+            treeTest.delete(elementTest2);
+            //    4
+            //   / \
+            //  3   7
+            // /   /
+            //1   5
+
+            //treeTest.printInOrder();
+            Assert.assertEquals(null, treeTest.findSort(elementTest2));
+            Assert.assertEquals(elementTest3, treeTest.findSort(elementTest3));
+            Assert.assertEquals(elementTest1, treeTest.findSort(elementTest1));
+            Assert.assertEquals(elementTest3, treeTest.getRoot().getLeft().getKey());
+            Assert.assertEquals(elementTest1, treeTest.getRoot().getLeft().getLeft().getKey());
+
+            treeTest.delete(elementTest4);
+            //    5
+            //   / \
+            //  3   7
+            // /
+            //1
+            Assert.assertEquals(null, treeTest.findSort(elementTest4));
+            Assert.assertEquals(elementTest5, treeTest.findSort(elementTest5));
+            Assert.assertEquals(elementTest3, treeTest.findSort(elementTest3));
+            Assert.assertEquals(elementTest7, treeTest.findSort(elementTest7));
+            Assert.assertEquals(elementTest1, treeTest.findSort(elementTest1));
+            Assert.assertEquals(elementTest5, treeTest.getRoot().getKey());
+            Assert.assertEquals(elementTest7, treeTest.getRoot().getRight().getKey());
+            Assert.assertEquals(elementTest3, treeTest.getRoot().getLeft().getKey());
+            Assert.assertEquals(elementTest1, treeTest.getRoot().getLeft().getLeft().getKey());
+
+        } catch (ElementNotFound | EmptyTreeException ignore){
+            Assert.fail("No se esperaba ninguna excepcion");
+        }
+    }
+
+    @Test
+    public void deleteExceptions(){
+        Assert.assertThrows(EmptyTreeException.class, () -> {
+            treeTest.delete(1);
+        });
+        Assert.assertThrows(EmptyTreeException.class, () -> {
+            treeTest.delete(5);
+        });
+        treeTest.insert(elementTest4,elementTest4);
+        treeTest.insert(elementTest2,elementTest2);
+        treeTest.insert(elementTest6,elementTest6);
+        treeTest.insert(elementTest1,elementTest1);
+        Assert.assertThrows(ElementNotFound.class, () -> {
+            treeTest.delete(7);
+        });
+        Assert.assertThrows(ElementNotFound.class, () -> {
+            treeTest.delete(10);
+        });
+        Assert.assertThrows(ElementNotFound.class, () -> {
+            treeTest.delete(13);
+        });
+        }
+
+
+
+    @Test
+    public void countCompleteElements(){
+        treeTest.insert(elementTest4,elementTest4);
+        treeTest.insert(elementTest2,elementTest2);
+        treeTest.insert(elementTest6,elementTest6);
+        treeTest.insert(elementTest1,elementTest1);
+        treeTest.insert(elementTest3,elementTest3);
+        treeTest.insert(elementTest5,elementTest5);
+        treeTest.insert(elementTest7,elementTest7);
+        Assert.assertEquals(3, treeTest.countCompleteElements());
+        try{
+            treeTest.delete(elementTest7);
+            Assert.assertEquals(2, treeTest.countCompleteElements());
+            treeTest.delete(elementTest1);
+            Assert.assertEquals(1, treeTest.countCompleteElements());
+        } catch (ElementNotFound | EmptyTreeException ignore){
+        Assert.fail("No se esperaba ninguna excepcion");
+        }
+    }
+
+
+
+
+
+
 
 
 
