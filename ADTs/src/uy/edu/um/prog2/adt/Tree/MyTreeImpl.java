@@ -1,6 +1,7 @@
 package uy.edu.um.prog2.adt.Tree;
 
 import uy.edu.um.prog2.adt.exceptions.ElementNotFound;
+import uy.edu.um.prog2.adt.exceptions.EmptyTreeException;
 
 public class MyTreeImpl<K extends Comparable<K>, T> implements MyTree<K, T> {
     private TreeNode<K, T> root;
@@ -166,12 +167,17 @@ public class MyTreeImpl<K extends Comparable<K>, T> implements MyTree<K, T> {
 
 
     //--Delete--
-    public void delete(K key) throws ElementNotFound {
+    public void delete(K key) throws ElementNotFound,EmptyTreeException {
         T existe = findSort(key);
         if (existe!=null){
-            this.root = delete2(key,this.root);
+            TreeNode<K, T> aux = delete2(key,this.root);
+            if(this.root == null){
+                throw new ElementNotFound();
+            } else {
+                this.root = aux;
+            }
         } else {
-            throw new ElementNotFound();
+            throw new EmptyTreeException();
         }
     }
     private TreeNode<K, T> delete2(K key,TreeNode<K, T> root) {

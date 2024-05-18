@@ -1,6 +1,7 @@
 package uy.edu.um.prog2.adt.Tree;
 
 import uy.edu.um.prog2.adt.exceptions.ElementNotFound;
+import uy.edu.um.prog2.adt.exceptions.EmptyTreeException;
 
 public interface MyTree<K, T> {
 
@@ -18,6 +19,6 @@ public interface MyTree<K, T> {
 
     void insert(T value, K key);
 
-    void delete(K key) throws ElementNotFound;
+    void delete(K key) throws ElementNotFound, EmptyTreeException;
 
 }
