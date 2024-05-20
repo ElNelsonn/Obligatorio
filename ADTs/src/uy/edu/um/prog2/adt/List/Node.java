@@ -1,5 +1,7 @@
 package uy.edu.um.prog2.adt.List;
 
+import java.util.Objects;
+
 public class Node<T> {
     private T value;
     private Node<T> nextNode;
@@ -11,9 +13,11 @@ public class Node<T> {
     public T getValue() {
         return value;
     }
+
     public Node<T>  getNextNode(){
         return  this.nextNode;
     }
+
     public void setNextNode(Node<T> node){
         this.nextNode = node;
     }
