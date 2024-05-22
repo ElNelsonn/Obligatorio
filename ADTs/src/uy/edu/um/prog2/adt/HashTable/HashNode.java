@@ -1,10 +1,10 @@
 package uy.edu.um.prog2.adt.HashTable;
 
 public class HashNode<K,V> {
-    K key;
-    V value;
+    private K key;
+    private V value;
 
-    HashNode(K key, V value){
+    public HashNode(K key, V value){
         this.key = key;
         this.value = value;
     }
