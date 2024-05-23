@@ -36,7 +36,7 @@ public class MyHashTableImpl<K,V> implements MyHashTable<K,V> {
     }
 
     private void sort() {
-        int oldSizeArray = this.sizeArray
+        int oldSizeArray = this.sizeArray;
         HashNode<K, V>[] oldArray = this.array;
 
         this.sizeArray = oldSizeArray;
@@ -129,5 +129,13 @@ public class MyHashTableImpl<K,V> implements MyHashTable<K,V> {
 
     public void setElementsIn(int elementsIn) {
         this.elementsIn = elementsIn;
+    }
+
+    public int getSizeArray() {
+        return sizeArray;
+    }
+
+    public void setSizeArray(int sizeArray) {
+        this.sizeArray = sizeArray;
     }
 }
